@@ -1,0 +1,197 @@
+Code book
+
+## Per the instructions,
+# 
+# 1. Merge the training and test sets into one data set
+# 2. Extract only the measurements on the mean and standard deviation
+# for each measurement
+# 3. Use descriptive activity names to name the activities
+# in the data set
+# 4. Appropriately label the data set with descriptive variable names
+# 5. Create a second independent tidy dataset with the average of each
+# variable for each activity and each subject
+
+1. According to the data, for each measurement taken, 70% were used as the test 
+data and 30% are used as the training data (or maybe I have that backwards).
+But since they are samples from the same set of experiments, the two datasets 
+are "merged" by simply appending one to the end of the other.
+
+2. Out of the 561 variables provided, 45 include "mean" and 32 include 
+"std" (standard deviation). (There are actually some angle measurements that 
+include the term "mean", but those are excluded here.)
+
+These measurements are in the following columns:
+
+MEAN:
+	1. tBodyAcc-mean()-X
+	2. tBodyAcc-mean()-Y
+	3. tBodyAcc-mean()-Z
+	41. tGravityAcc-mean()-X
+	42. tGravityAcc-mean()-Y
+	43. tGravityAcc-mean()-Z
+	81. tBodyAccJerk-mean()-X
+	82. tBodyAccJerk-mean()-Y
+	83. tBodyAccJerk-mean()-Z
+	121. tBodyGyro-mean()-X
+	122. tBodyGyro-mean()-Y
+	123. tBodyGyro-mean()-Z
+	161. tBodyGyroJerk-mean()-X
+	162. tBodyGyroJerk-mean()-Y
+	163. tBodyGyroJerk-mean()-Z
+	201. tBodyAccMag-mean()
+	214. tGravityAccMag-mean()
+	227. tBodyAccJerkMag-mean()
+	240. tBodyGyroMag-mean()
+	253. tBodyGyroJerkMag-mean()
+	266. fBodyAcc-mean()-X
+	267. fBodyAcc-mean()-Y
+	268. fbodyAcc-mean()-Z
+	294. fBodyAcc-meanFreq()-X
+	295. fBodyAcc-meanFreq()-Y
+	296. fBodyAcc-meanFreq()-Z
+	345. fBodyAccJerk-mean()-X
+	346. fBodyAccJerk-mean()-Y
+	347. fBodyAccJerk-mean()-Z
+	373. fBodyAccJerk-meanFreq()-X
+	374. fBodyAccJerk-meanFreq()-Y
+	375. fBodyAccJerk-meanFreq()-Z
+	424. fBodyGyro-mean()-X
+	425. fBodyGyro-mean()-Y
+	426. fBodyGyro-mean()-Z
+	452. fBodyGyro-meanFreq()-X
+	453. fBodyGyro-meanFreq()-Y
+	454. fBodyGyro-meanFreq()-Z
+	503. fBodyAccMag-mean()
+	513. fBodyAccMag-meanFreq()
+	516. fBodyBodyAccJerkMag-mean()
+	526. fBodyBodyAccJerkMag-meanFreq()
+	529. fBodyBodyGyroMag-mean()
+	539. fBodyBodyGyroMag-meanFreq()
+	542. fBodyBodyGyroJerkMag-mean()
+	552. fBodyBodyGyroJerkMag-meanFreq()
+
+STANDARD DEVIATION (STD)
+	4. tBodyAcc-std()-X
+	5. tBodyAcc-std()-Y
+	6. tBodyAcc-std()-Z
+	44. tGravityAcc-std()-X
+	45. tGravityAcc-std()-Y
+	46. tGravityAcc-std()-Z
+	84. tBodyAccJerk-std()-X
+	85. tBodyAccJerk-std()-Y
+	86. tBodyAccJerk-std()-Z
+	124. tBodyGyro-std()-X
+	125. tBodyGyro-std()-Y
+	126. tBodyGyro-std()-Z
+	164. tBodyGyroJerk-std()-X
+	165. tBodyGyroJerk-std()-Y
+	166. tBodyGyroJerk-std()-Z
+	202. tBodyAccMag-std()
+	215. tGravityAccMag-std()
+	228. tBodyAccJerkMag-std()
+	241. tBodyGyroMag-std()
+	254. tBodyGyroJerkMag-std()
+	269. fBodyAcc-std()-X
+	270. fBodyAcc-std()-Y
+	271. fBodyAcc-std()-Z
+	348. fBodyAccJerk-std()-X
+	349. fBodyAccJerk-std()-Y
+	350. fBodyAccJerk-std()-Z
+	427. fBodyGyro-std()-X
+	428. fBodyGyro-std()-Y
+	429. fBodyGyro-std()-Z
+	504. fBodyAccMag-std()
+	517. fBodyBodyAccJerkMag-std()
+	530. fBodyBodyGyroMag-std()
+	543. fBodyBodyGyroJerkMag-std()
+
+3. The descriptions provided with the data are actually pretty descriptive. 
+I'll change "t" to "time" and "f" to "frequency" at the beginning of the 
+variables, just to add a little value here. Also I removed the parentheses.
+Finally, since the variables are selected to be means or standard 
+deviations, having those strings in the variable names is a little redundant. 
+So I remove them to make it a little easier to read.		
+
+	
+	1. TimeBodyAcc-X
+	2. TimeBodyAcc-Y
+	3. TimeBodyAcc-Z
+	41. TimeGravityAcc-X
+	42. TimeGravityAcc-Y
+	43. TimeGravityAcc-Z
+	81. TimeBodyAccJerk-X
+	82. TimeBodyAccJerk-Y
+	83. TimeBodyAccJerk-Z
+	121. TimeBodyGyro-X
+	122. TimeBodyGyro-Y
+	123. TimeBodyGyro-Z
+	161. TimeBodyGyroJerk-X
+	162. TimeBodyGyroJerk-Y
+	163. TimeBodyGyroJerk-Z
+	201. TimeBodyAccMag
+	214. TimeGravityAccMag
+	227. TimeBodyAccJerkMag
+	240. TimeBodyGyroMag
+	253. TimeBodyGyroJerkMag
+	266. FreqBodyAcc-X
+	267. FreqBodyAcc-Y
+	268. FreqBodyAcc-Z
+	294. FreqBodyAccFreq-X
+	295. FreqBodyAccFreq-Y
+	296. FreqBodyAccFreq-Z
+	345. FreqBodyAccJerk-X
+	346. FreqBodyAccJerk-Y
+	347. FreqBodyAccJerk-Z
+	373. FreqBodyAccJerkFreq-X
+	374. FreqBodyAccJerkFreq-Y
+	375. FreqBodyAccJerkFreq-Z
+	424. FreqBodyGyro-X
+	425. FreqBodyGyro-Y
+	426. FreqBodyGyro-Z
+	452. FreqBodyGyroFreq-X
+	453. FreqBodyGyroFreq-Y
+	454. FreqBodyGyroFreq-Z
+	503. FreqBodyAccMag
+	513. FreqBodyAccMagFreq
+	516. FreqBodyBodyAccJerkMag
+	526. FreqBodyBodyAccJerkMagFreq
+	529. FreqBodyBodyGyroMag
+	539. FreqBodyBodyGyroMagFreq
+	542. FreqBodyBodyGyroJerkMag
+	552. FreqBodyBodyGyroJerkMagFreq
+
+STANDARD DEVIATION (STD)
+	4. TimeBodyAcc-X
+	5. TimeBodyAcc-Y
+	6. TimeBodyAcc-Z
+	44. TimeGravityAcc-X
+	45. TimeGravityAcc-Y
+	46. TimeGravityAcc-Z
+	84. TimeBodyAccJerk-X
+	85. TimeBodyAccJerk-Y
+	86. TimeBodyAccJerk-Z
+	124. TimeBodyGyro-X
+	125. TimeBodyGyro-Y
+	126. TimeBodyGyro-Z
+	164. TimeBodyGyroJerk-X
+	165. TimeBodyGyroJerk-Y
+	166. TimeBodyGyroJerk-Z
+	202. TimeBodyAccMag
+	215. TimeGravityAccMag
+	228. TimeBodyAccJerkMag
+	241. TimeBodyGyroMag
+	254. TimeBodyGyroJerkMag
+	269. FreqBodyAcc-X
+	270. FreqBodyAcc-Y
+	271. FreqBodyAcc-Z
+	348. FreqBodyAccJerk-X
+	349. FreqBodyAccJerk-Y
+	350. FreqBodyAccJerk-Z
+	427. FreqBodyGyro-X
+	428. FreqBodyGyro-Y
+	429. FreqBodyGyro-Z
+	504. FreqBodyAccMag
+	517. FreqBodyBodyAccJerkMag
+	530. FreqBodyBodyGyroMag
+	
+	
