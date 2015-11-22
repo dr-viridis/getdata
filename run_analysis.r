@@ -1,4 +1,3 @@
-# run_analysis <- function() {
 	## Per the instructions,
 	# 
 	# 1. Merge the training and test sets into one data set
@@ -120,7 +119,8 @@ std_headers <- c(
 "FreqBodyGyro-Z",
 "FreqBodyAccMag",
 "FreqBodyBodyAccJerkMag",
-"FreqBodyBodyGyroMag")
+"FreqBodyBodyGyroMag",
+"FreqBodyBodyGyroJerkMag")
 
 # Now change the perfectly fine names to some other 
 # perfectly fine names
@@ -130,13 +130,11 @@ names(std_data) <- std_headers
 
 # Finally (step 5) we create a second tidy dataset with the
 # average of each variable above
-# sounds like a case or lapply?
 
 last_means <- colMeans(mean_data)
 last_stds <- colMeans(std_data)
 
-last_last <- rbind(last_means,last_stds)
+last_last <- cbind(last_means,last_stds)
 
 write.table(last_last, "c:/data/getdata/output.txt", row.name=FALSE)
 
-#} #end run_analysis function
