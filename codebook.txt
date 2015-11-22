@@ -106,12 +106,13 @@ STANDARD DEVIATION (STD)
 	543. fBodyBodyGyroJerkMag-std()
 
 3. The descriptions provided with the data are actually pretty descriptive. 
-I'll change "t" to "time" and "f" to "frequency" at the beginning of the 
+I changed "t" to "time" and "f" to "frequency" at the beginning of the 
 variables, just to add a little value here. Also I removed the parentheses.
 Finally, since the variables are selected to be means or standard 
 deviations, having those strings in the variable names is a little redundant. 
-So I remove them to make it a little easier to read.		
+So I removed them to make it a little easier to read.		
 
+Mean variables (new names): 
 	
 	1. TimeBodyAcc-X
 	2. TimeBodyAcc-Y
@@ -160,7 +161,8 @@ So I remove them to make it a little easier to read.
 	542. FreqBodyBodyGyroJerkMag
 	552. FreqBodyBodyGyroJerkMagFreq
 
-STANDARD DEVIATION (STD)
+STANDARD DEVIATION (STD) (new names)
+
 	4. TimeBodyAcc-X
 	5. TimeBodyAcc-Y
 	6. TimeBodyAcc-Z
@@ -194,4 +196,9 @@ STANDARD DEVIATION (STD)
 	517. FreqBodyBodyAccJerkMag
 	530. FreqBodyBodyGyroMag
 	
-	
+4. I changed the original variable names to my new names
+using the "names" command
+
+5. Finally, I used the colMeans function to generate the average 
+for each of my variables, and wrote them out to a file (creatively 
+named "output.txt") for submission.	
